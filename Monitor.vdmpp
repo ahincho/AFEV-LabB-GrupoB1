@@ -1,0 +1,34 @@
+/**
+  Monitor.
+  @version
+  @author
+*/
+
+class Monitor
+
+instance variables
+	private temps : seq of nat;
+	private alarm : bool;
+
+operations
+
+-- Constructor for Monitor Class
+public Monitor: seq of nat * bool ==> Monitor
+Monitor(temperaturas, alarma) == (
+	temps := temperaturas;
+	alarm := alarma;
+);
+
+public Rising: () ==> bool
+Rising() ==
+(alarm := temps(1) < temps(5); return alarm);
+
+public OverLimit: () ==> bool
+OverLimit() ==
+(alarm := exists i in set elems temps & i > 400; return alarm);
+
+public ContinuallyOverLimit: () ==> bool
+ContinuallyOverLimit() ==
+(alarm := forall i in set elems temps & i > 400; return alarm);
+
+end Monitor
