@@ -1,0 +1,62 @@
+/**
+  MonitorV2.
+  <p>Second Version of Monitor Class</p>
+  @version 2.0
+  @author Angel Hincho Jove
+*/
+
+class MonitorV2
+
+instance variables
+
+	private temps : seq of nat;
+	private alarm : bool;
+
+inv len temps = 5;
+
+operations
+
+-- Constructor for MonitorV2 Class
+public MonitorV2 : seq of nat * bool ==> MonitorV2
+MonitorV2(someTemps, anAlarm) == (
+	temps := someTemps;
+	alarm := anAlarm;
+);
+
+-- Rising Method
+-- If last temp is greater than the
+-- first one then activate the alarm
+public Rising : () ==> bool
+Rising() == (
+	alarm := temps(1) < temps(5);
+	return alarm;
+);
+
+-- OverLimit Method - Version 1
+-- If any temperature is greater than
+-- 400 celsius then activate the alarm
+public OverLimitV1 : () ==> bool
+OverLimitV1() == (
+	alarm := temps(1) > 400 or temp(2) > 400 or temps(3) > 400 or temps(4) > 400 or temps(5) > 400;
+	return alarm;
+);
+
+-- OverLimit Method - Version 2
+-- If any temperature is greater than
+-- 400 celsius then activate the alarm
+public OverLimitV2 : () ==> bool
+OverLimitV2() == (
+	alarm := exists i in set inds temps & temps(i) > 400;
+	return alarm;
+);
+
+-- Continually OverLimit Method - Version 1
+-- If all temperatures are greater than
+-- 400 celsius then activate the alarm
+public ContinuallyOverLimitV1 : () ==> bool
+ContinuallyOverLimitV1() == (
+	alarm := temps(1) > 400 and temp(2) > 400 and temps(3) > 400 and temps(4) > 400 and temps(5) > 400;
+	return alarm;
+);
+
+end MonitorV2
