@@ -1,14 +1,17 @@
 /**
   Monitor.
-  @version
-  @author
+  @version 1.0
+  @author Angel Hincho Jove
 */
 
 class Monitor
 
 instance variables
+
 	private temps : seq of nat;
 	private alarm : bool;
+
+inv len temps = 5;
 
 operations
 

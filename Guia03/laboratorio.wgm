@@ -1,6 +1,6 @@
 FormatVersion:2
-mainW:0,23,1920,1017,1
-browserW:0,0,354,362,1
+mainW:6,30,1908,1014,1
+browserW:0,0,320,400,1
 codeW:200,30,800,400,0
 errorW:350,250,600,200,0
 interpreterW:50,50,800,500,0
