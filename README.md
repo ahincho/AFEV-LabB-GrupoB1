@@ -1,5 +1,5 @@
 # Aspectos Formales de Especificación y Verificación
-## Laboratorio B - Guía 03
+## Laboratorio B
 ### Grupo B1:
 - Chávez Cáceres, Samir Diego
 - Hincho Jove, Angel Eduardo
