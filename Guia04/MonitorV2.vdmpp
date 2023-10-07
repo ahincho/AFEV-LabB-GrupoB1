@@ -75,6 +75,14 @@ AllInRange() == (
 	return forall i in set elems temps & i >= 50 and i <= 400;
 );
 
+-- Snapping Of 10 Method
+-- Check if temperatures have a snapping
+-- in records with a step of 10 celsius
+public SnappingOf10 : () ==> bool
+SnappingOf10() == (
+	return forall i in set inds temps & i > 1 => temps(i) > temps(i - 1) + 10;
+);
+
 -- Two Greater Than 400 Method
 -- Check if there are two different records
 -- of temperatures greater than 400 celsius
