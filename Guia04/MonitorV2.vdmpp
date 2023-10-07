@@ -46,7 +46,7 @@ OverLimitV1() == (
 -- 400 celsius then activate the alarm
 public OverLimitV2 : () ==> bool
 OverLimitV2() == (
-	alarm := exists i in set inds temps & temps(i) > 400;
+	alarm := exists i in set elems temps & i > 400;
 	return alarm;
 );
 
@@ -56,6 +56,15 @@ OverLimitV2() == (
 public ContinuallyOverLimitV1 : () ==> bool
 ContinuallyOverLimitV1() == (
 	alarm := temps(1) > 400 and temp(2) > 400 and temps(3) > 400 and temps(4) > 400 and temps(5) > 400;
+	return alarm;
+);
+
+-- Continually OverLimit Method - Version 2
+-- If all temperatures are greater than
+-- 400 celsius then activate the alarm
+public ContinuallyOverLimitV2 : () ==> bool
+ContinuallyOverLimitV2() == (
+	alarm := forall i in set elems temps & i > 400;
 	return alarm;
 );
 
