@@ -68,4 +68,11 @@ ContinuallyOverLimitV2() == (
 	return alarm;
 );
 
+-- All In Rage Method
+-- Show temperatures between 50 and 400 celsius
+public AllInRange : () ==> bool
+AllInRange() == (
+	return forall i in set elems temps & i >= 50 and i <= 400;
+);
+
 end MonitorV2
