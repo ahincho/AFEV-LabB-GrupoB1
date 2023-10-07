@@ -37,7 +37,7 @@ Rising() == (
 -- 400 celsius then activate the alarm
 public OverLimitV1 : () ==> bool
 OverLimitV1() == (
-	alarm := temps(1) > 400 or temp(2) > 400 or temps(3) > 400 or temps(4) > 400 or temps(5) > 400;
+	alarm := temps(1) > 400 or temps(2) > 400 or temps(3) > 400 or temps(4) > 400 or temps(5) > 400;
 	return alarm;
 );
 
@@ -55,7 +55,7 @@ OverLimitV2() == (
 -- 400 celsius then activate the alarm
 public ContinuallyOverLimitV1 : () ==> bool
 ContinuallyOverLimitV1() == (
-	alarm := temps(1) > 400 and temp(2) > 400 and temps(3) > 400 and temps(4) > 400 and temps(5) > 400;
+	alarm := temps(1) > 400 and temps(2) > 400 and temps(3) > 400 and temps(4) > 400 and temps(5) > 400;
 	return alarm;
 );
 
