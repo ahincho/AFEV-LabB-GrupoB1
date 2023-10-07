@@ -75,4 +75,12 @@ AllInRange() == (
 	return forall i in set elems temps & i >= 50 and i <= 400;
 );
 
+-- Two Greater Than 400 Method
+-- Check if there are two different records
+-- of temperatures greater than 400 celsius
+public TwoGreaterThan400 : () ==> bool
+TwoGreaterThan400() == (
+	return card {i | i in set elems temps & i > 400} = 2;
+);
+
 end MonitorV2
