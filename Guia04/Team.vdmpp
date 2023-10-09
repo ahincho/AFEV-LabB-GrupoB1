@@ -1,0 +1,48 @@
+/**
+  Team.
+  <p>Team Class which stores its Scores</p>
+  @version 1.0
+  @author Angel Hincho Jove
+*/
+
+class Team
+
+types
+	Country = <Brazil> | <France> | <Germany> | <Spain>;
+	Score :: won : nat
+		 drawn : nat
+		 lost : nat
+		 points : nat;
+
+instance variables
+	country : Country;
+	scores : seq of Score := [];
+
+operations
+
+-- Constructor for Team Class
+public Team: Country ==> Team
+Team(aCountry) == (
+	country := aCountry;
+);
+
+-- Get the Country of the Team
+public GetCountry : () ==> Country
+GetCountry() == (
+	return country;
+);
+
+-- Add Scores to the Team
+public AddScore : nat * nat * nat ==> bool
+AddScore(w, d, l) == (
+	scores := scores ^ [mk_Score(w, d, l, w * 3 + d)];
+	return true;
+);
+
+-- Get Scores of the Team
+public GetScores : () ==> seq of Score
+GetScores() == (
+	return scores;
+);
+
+end Team
