@@ -1,0 +1,48 @@
+/**
+  ShoppingCart.
+  <p>Shopping Cart with Items</p>
+  @version 1.0
+  @author Angel Hincho Jove
+*/
+
+class ShoppingCart
+
+types
+	Unit = <Liters> | <Kilograms> | <Package> | <Other>;
+	Item :: name : seq of char
+		price : real
+		quantity : real
+		unit : Unit;
+
+instance variables
+	items : seq of Item := [];
+
+operations
+
+-- Constructor for Shopping Cart Class
+public ShoppingCart: () ==> ShoppingCart
+ShoppingCart() == ();
+
+-- Add Items to the Shopping Cart
+public AddItem : seq of char * real * real * Unit ==> bool
+AddItem(n, p, q, u) == (
+	items := items ^ [mk_Item(n, p, q, u)];
+	return true;
+);
+
+-- Get Items from the Shopping Cart
+public GetItems : () ==> seq of Item
+GetItems() == (
+	return items;
+);
+
+-- Sum prices of all Items on the Shopping Cart
+public GetBill : () ==> real
+GetBill() == (
+	dcl bill : real := 0.0;
+	for item in items do
+		bill := bill + item.price * item.quantity;
+	return bill;
+);
+
+end ShoppingCart
