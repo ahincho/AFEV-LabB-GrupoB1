@@ -1,0 +1,47 @@
+/**
+  Bus.
+  <p>Bus Entity with Seats and Passengers</p>
+  @version 1.0
+  @author Angel Hincho Jove
+*/
+
+class Bus
+
+types
+	Location = <Window> | <Corridor> | <Other>;
+	Seat :: id : nat
+		location : Location
+		passenger : seq of char;
+	
+instance variables
+	name : seq of char;
+	seats : seq of Seat := [];	
+
+operations
+
+-- Constructor for Bus Class
+public Bus: seq of char ==> Bus
+Bus(aName) == (
+	name := aName;
+);
+
+-- Get the Name of the Bus
+public GetName : () ==> seq of char
+GetName() == (
+	return name;
+);
+
+-- Add a Seat with its Passenger on the Bus
+public AddSeat : nat * Location * seq of char ==> bool
+AddSeat(i, l, p) == (
+	seats := seats ^ [mk_Seat(i, l, p)];
+	return true;
+);
+
+-- Get the Seats on the Bus
+public GetSeats : () ==> seq of Seat
+GetSeats() == (
+	return seats;
+);
+
+end Bus
