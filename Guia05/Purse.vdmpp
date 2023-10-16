@@ -1,6 +1,11 @@
 /**
   Purse.
-  <p>Purse Class</p>
+  <p>
+    Purse Class
+    Like any Wallet you have an Id
+    and balance. You can see, deposit
+    and draw balance if you need
+  </p>
   @version 1.0
   @author Angel Hincho Jove
 */
