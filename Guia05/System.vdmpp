@@ -14,29 +14,35 @@ class System
 
 instance variables
 	
-	private Purses : map Purse'CardId to Purse;
+	private Purses : map Purse`CardId to Purse;
 	inv forall p in set dom Purses & Purses(p).GetCardNo() = p;
 	private Log : seq of Transaction := [];
 	
 types
 	
 	public Transaction ::
-		fromId : Purse'CardId
-		toId : Purse'CardId
+		fromId : Purse`CardId
+		toId : Purse`CardId
 		sum : nat;
 	
 operations
 	
 	-- Transfer Balance from a Origin Purse to Final Purse
-	public Transfer : Purse'CardId * Purse'CardId * nat ==> ()
+	public Transfer : Purse`CardId * Purse`CardId * nat ==> ()
 	Transfer(fromId, toId, sum) == (
 		Purses(fromId).DecreaseBalance(sum);
 		Purses(toId).IncreaseBalance(sum);
+		Log := Log ^ [mk_Transaction(fromId, toId, sum)];
 	)
 	pre
 		{fromId, toId} subset dom Purses and
-		fronId <> toId and
+		fromId <> toId and
 		Purses(fromId).GetBalance() >= sum;
+	
+	public GetLog : () ==> seq of Transaction
+	GetLog() == (
+		return Log;
+	);
 	
 	-- Constructor for System Class
 	public System : set of Purse ==> System
