@@ -1,6 +1,9 @@
 /**
   Rack.
-  <p>Rack Class</p>
+  <p>
+    Rack Class.
+    Rack of Glasses.
+  </p>
   @version 1.0
   @author Angel Hincho Jove
 */
@@ -15,36 +18,54 @@ instance variables
 	
 	private id : RackId;
 	private glasses : set of Glass;
-	capacity : nat;
+	private capacity : nat;
 	
 operations	
 
 	-- Constructor for Rack Class
 	public Rack : RackId * set of Glass * nat ==> Rack
-	Rack(r, gs, c) == (
-		id := r;
-		glasses := gs;
-		capacity := c;
+	Rack(rId, rGlasses, rCapacity) == (
+		id := rId;
+		glasses := rGlasses;
+		capacity := rCapacity;
 	)
 	pre
-		card gs <= c and
-		forall p, q in set gs &
-		p <> q => p.GetId() <> q.GetId() and
-		exists g in set gs &
-		g.GetMaterial() = <Hot>;
+		card rGlasses <= rCapacity and
+		forall p, q in set rGlasses & p <> q => p.GetId() <> q.GetId() and
+		exists r in set rGlasses & r.GetMaterial() = <Hot>;
+	
+	-- Get Rack Id of the Instance
+	public GetId : () ==> RackId
+	GetId() == (
+		return id;
+	);
 	
 	-- Get Glass Ids of the Rack
-	public GetGlassIds : () ==> seq of GlassId
+	public GetGlassIds : () ==> set of Glass`GlassId
 	GetGlassIds() == (
-		return dunion {g.GetId() | g in set glasses};
+		return { g.GetId() | g in set glasses };
+	);
+	
+	-- Get Glasses on the Rack
+	public GetGlasses : () ==> set of Glass
+	GetGlasses() == (
+		return glasses;
+	);
+	
+	-- Get Rack Capacity of the Instance
+	public GetCapacity : () ==> nat
+	GetCapacity() == (
+		return capacity;
 	);
 	
 	-- Check if the Rack is full
 	public IsFull : () ==> bool
 	IsFull() == (
-		return len glasses <= capacity;
+		return card glasses >= capacity;
 	);
-
+	
 functions
-
+	
+	-- No functions defined yet
+	
 end Rack
