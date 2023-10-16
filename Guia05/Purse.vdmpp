@@ -41,6 +41,12 @@ operations
 		return balance;
 	);
 	
+	-- Get the Card Id of the Purse
+	public GetCardNo : () ==> CardId
+	GetCardNo() == (
+		return cardNo;
+	);
+	
 	-- Constructor for Purse Class
 	public Purse : CardId * nat ==> Purse
 	Purse(newId, startBalance) == (
