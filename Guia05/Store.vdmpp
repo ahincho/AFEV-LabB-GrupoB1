@@ -1,6 +1,9 @@
 /**
   Store.
-  <p>Store Class</p>
+  <p>
+    Store Class.
+    Store of Racks.
+  </p>
   @version 1.0
   @author Angel Hincho Jove
 */
@@ -14,7 +17,7 @@ instance variables
 	racks : set of Rack;
 	
 operations
-
+	
 	-- Constructor for Store Class
 	public Store : set of Rack ==> Store
 	Store(r) == (
@@ -22,8 +25,7 @@ operations
 	)
 	pre
 		forall p, q in set r &
-		p <> q => p.GetRackId() <> q.GetRackId();
-		
+		p <> q => p.GetId() <> q.GetId();		
 
 functions
 
