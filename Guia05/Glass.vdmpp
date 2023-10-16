@@ -1,6 +1,9 @@
 /**
   Glass.
-  <p>Glass Class</p>
+  <p>
+    Glass Class.
+    A simple Glass or Container.
+  </p>
   @version 1.0
   @author Angel Hincho Jove
 */
@@ -9,7 +12,7 @@ class Glass
 
 types
 
-	Material = <Hot> | <Warn> | <Cold>;
+	public Material = <Hot> | <Warm> | <Cold>;
 	public GlassId = token;
 
 instance variables
@@ -22,10 +25,10 @@ operations
 
 	-- Constructor for Glass Class
 	public Glass : GlassId * Material * real ==> Glass
-	Glass(g, m, q) == (
-		id := g;
-		material := m;
-		quantity := q;
+	Glass(gId, gMaterial, gQuantity) == (
+		id := gId;
+		material := gMaterial;
+		quantity := gQuantity;
 	);
 
 	-- Get Glass Id of Instance
@@ -38,6 +41,12 @@ operations
 	public GetMaterial : () ==> Material
 	GetMaterial() == (
 		return material;
+	);
+
+	-- Get Quantity of Instance
+	public GetQuantity : () ==> real
+	GetQuantity() == (
+		return quantity;
 	);
 	
 end Glass
