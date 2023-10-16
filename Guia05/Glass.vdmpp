@@ -1,0 +1,43 @@
+/**
+  Glass.
+  <p>Glass Class</p>
+  @version 1.0
+  @author Angel Hincho Jove
+*/
+
+class Glass
+
+types
+
+	Material = <Hot> | <Warn> | <Cold>;
+	public GlassId = token;
+
+instance variables
+	
+	private id : GlassId;
+	private material : Material;
+	private quantity : real;
+
+operations
+
+	-- Constructor for Glass Class
+	public Glass : GlassId * Material * real ==> Glass
+	Glass(g, m, q) == (
+		id := g;
+		material := m;
+		quantity := q;
+	);
+
+	-- Get Glass Id of Instance
+	public GetId : () ==> GlassId
+	GetId() == (
+		return id;
+	);
+	
+	-- Get Material of Instance
+	public GetMaterial : () ==> Material
+	GetMaterial() == (
+		return material;
+	);
+	
+end Glass

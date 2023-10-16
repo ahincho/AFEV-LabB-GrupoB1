@@ -1,0 +1,50 @@
+/**
+  Purse.
+  <p>Purse Class</p>
+  @version 1.0
+  @author Angel Hincho Jove
+*/
+
+class Purse
+
+types
+	
+	public CardId = token
+	
+instance variables
+	
+	private balance : nat;
+	private cardNo : CardId;
+	
+operations
+	
+	-- Increase Balance of the Purse
+	public IncreaseBalance : nat ==> ()
+	IncreaseBalance(sum) == (
+		balance := balance + sum;
+	);
+	
+	-- Decrease Balance of the Purse
+	public DecreaseBalance : nat ==> ()
+	DecreaseBalance(sum) == (
+		balance := balance - sum;
+	);
+	
+	-- Get the Balance in the Purse
+	public GetBalance : () ==> nat
+	GetBalance() == (
+		return balance;
+	);
+	
+	-- Constructor for Purse Class
+	public Purse : CardId * nat ==> Purse
+	Purse(newId, startBalance) == (
+		cardNo := newId;
+		balance := startBalance;
+	);
+	
+functions
+	
+	-- No functions currently defined
+	
+end Purse

@@ -1,0 +1,30 @@
+/**
+  Store.
+  <p>Store Class</p>
+  @version 1.0
+  @author Angel Hincho Jove
+*/
+
+class Store
+
+types
+
+instance variables
+	
+	racks : set of Rack;
+	
+operations
+
+	-- Constructor for Store Class
+	public Store : set of Rack ==> Store
+	Store(r) == (
+		racks := r;	
+	)
+	pre
+		forall p, q in set r &
+		p <> q => p.GetRackId() <> q.GetRackId();
+		
+
+functions
+
+end Store

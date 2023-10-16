@@ -1,0 +1,50 @@
+/**
+  Rack.
+  <p>Rack Class</p>
+  @version 1.0
+  @author Angel Hincho Jove
+*/
+
+class Rack
+
+types
+	
+	RackId = token;
+	
+instance variables
+	
+	private id : RackId;
+	private glasses : set of Glass;
+	capacity : nat;
+	
+operations	
+
+	-- Constructor for Rack Class
+	public Rack : RackId * set of Glass * nat ==> Rack
+	Rack(r, gs, c) == (
+		id := r;
+		glasses := gs;
+		capacity := c;
+	)
+	pre
+		card gs <= c and
+		forall p, q in set gs &
+		p <> q => p.GetId() <> q.GetId() and
+		exists g in set gs &
+		g.GetMaterial() = <Hot>;
+	
+	-- Get Glass Ids of the Rack
+	public GetGlassIds : () ==> seq of GlassId
+	GetGlassIds() == (
+		return dunion {g.GetId() | g in set glasses};
+	);
+	
+	-- Check if the Rack is full
+	public IsFull : () ==> bool
+	IsFull() == (
+		return len glasses <= capacity;
+	);
+
+functions
+
+end Rack
