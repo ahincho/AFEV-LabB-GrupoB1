@@ -14,18 +14,24 @@ types
 
 instance variables
 	
-	racks : set of Rack;
+	private racks : set of Rack;
 	
 operations
 	
 	-- Constructor for Store Class
 	public Store : set of Rack ==> Store
-	Store(r) == (
-		racks := r;	
+	Store(sRacks) == (
+		racks := sRacks;	
 	)
 	pre
-		forall p, q in set r &
+		forall p, q in set sRacks &
 		p <> q => p.GetId() <> q.GetId();		
+	
+	-- Get the Racks on the Store
+	public GetRacks : () ==> set of Rack
+	GetRacks() == (
+		return racks;
+	);
 
 functions
 
