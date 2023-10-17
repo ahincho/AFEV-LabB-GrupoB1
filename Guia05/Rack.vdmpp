@@ -12,7 +12,7 @@ class Rack
 
 types
 	
-	RackId = token;
+	public RackId = token;
 	
 instance variables
 	
@@ -28,11 +28,12 @@ operations
 		id := rId;
 		glasses := rGlasses;
 		capacity := rCapacity;
+		
 	)
 	pre
 		card rGlasses <= rCapacity and
-		forall p, q in set rGlasses & p <> q => p.GetId() <> q.GetId() and
-		exists r in set rGlasses & r.GetMaterial() = <Hot>;
+		exists g in set rGlasses & g.GetMaterial() = <Hot> and
+		forall p, q in set rGlasses & p <> q => p.GetId() <> q.GetId();
 	
 	-- Get Rack Id of the Instance
 	public GetId : () ==> RackId
