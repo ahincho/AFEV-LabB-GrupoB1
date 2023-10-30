@@ -1,0 +1,48 @@
+/**
+  Purse.
+  <p>
+    Simple Purse.
+    You can withdraw and deposit money.
+  </p>
+  @version 1.0
+  @author Angel Hincho Jove
+*/
+
+class Purse
+
+instance variables
+
+	private pin : seq of nat := [0, 0, 0, 0];
+	inv pin <> [] and len pin = 4 and
+	forall p in set elems pin & p >= 0 and p <= 9;
+	private balance : real;
+	private credit : real := 0;
+
+operations
+
+	
+	public Withdraw : real ==> real
+	Withdraw(amount) == (
+		if amount > balance then
+			CreditOp(amount, [1, 2, 3, 4])
+		else
+			balance := balance - amount;
+			return balance;
+	);
+	
+	-- Constructor for Purse Class
+	public Purse: real * seq of nat ==> Purse
+	Purse(purseBalance, pursePin) == (
+		balance := purseBalance;
+		pin := pursePin;
+	);
+	
+	public CreditOp : real * seq of nat ==> real
+	CreditOp(amount, key) == (
+		balance := balance - amount;
+		return abs(balance);		
+	) pre pin = key and balance < amount and amount > 0;
+
+functions
+
+end Purse
