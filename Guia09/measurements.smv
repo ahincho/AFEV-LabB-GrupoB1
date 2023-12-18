@@ -1,0 +1,21 @@
+MODULE main
+DEFINE
+	limit := 30;
+VAR
+	location : {safe, danger};
+	measure : 0 .. 100;
+ASSIGN
+	init(location) := safe;
+	init(measure) := 0;
+	next(location) := case
+		(location = safe) & (measure < limit): safe;
+		(location = safe) & (measure >= limit): danger;
+		(location = danger) & (measure < limit): safe;
+		TRUE: location;
+			esac;
+	next(measure) := case
+		(location = safe) & (measure < 95): measure + 5;
+		(location = danger) & (measure < 50): measure + 5;
+		(location = danger) & (measure >= 50): measure - 30;
+		TRUE: measure;
+			esac;
