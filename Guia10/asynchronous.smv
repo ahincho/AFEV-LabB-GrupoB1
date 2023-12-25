@@ -1,0 +1,15 @@
+MODULE semaphore(other_semaphore)
+VAR
+	state: {red, yellow, green};
+ASSIGN
+	init(state) := red;
+	next(state) := case
+		state = red & other_semaphore = red : {red, yellow};
+		state = yellow : green;
+		state = green : {green, red};
+		TRUE: state;
+	esac;
+MODULE main
+VAR
+	sem1: process semaphore(sem2.state);
+	sem2: process semaphore(sem1.state);
